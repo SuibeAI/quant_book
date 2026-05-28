@@ -5,6 +5,8 @@
 Thumbs.db
 .vscode/
 .idea/
+*.swp
+*.swo
 
 # ------------------------------
 # Python
@@ -18,6 +20,9 @@ __pycache__/
 .pytest_cache/
 .mypy_cache/
 .ruff_cache/
+.pyre/
+.nox/
+.tox/
 .coverage
 .coverage.*
 htmlcov/
@@ -26,11 +31,23 @@ htmlcov/
 .venv/
 venv/
 env/
+.python-version
 
 # ------------------------------
 # Jupyter
 # ------------------------------
 .ipynb_checkpoints/
+**/.ipynb_checkpoints/
+
+# ------------------------------
+# Jupyter Book / MyST build outputs
+# ------------------------------
+_build/
+.jupyter-book-generated/
+.myst-build/
+.myst-cache/
+.jupyter_cache/
+.myst-templates/
 
 # ------------------------------
 # Local generated artifacts
@@ -39,9 +56,8 @@ books/DeepLOB/reference_DeepLOB/
 books/DeepLOB/__pycache__/
 books/DeepLOB/training_history*.json
 books/DeepLOB/best_val_model*.pth
+books/DeepLOB/training_curves*.png
 books/DeepLOB/*.txt
-books/DeepLOB/*.png
-
 
 # Large data snapshots / temp files
 *.tmp
