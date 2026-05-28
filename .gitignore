@@ -48,6 +48,10 @@ _build/
 .myst-cache/
 .jupyter_cache/
 .myst-templates/
+!.myst-templates/
+!.myst-templates/book-theme/
+!.myst-templates/book-theme/**
+.myst-templates/book-theme/node_modules/
 
 # ------------------------------
 # Local generated artifacts
