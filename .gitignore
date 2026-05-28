@@ -1,0 +1,48 @@
+# ------------------------------
+# OS / Editor
+# ------------------------------
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# ------------------------------
+# Python
+# ------------------------------
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.so
+*.egg-info/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+.coverage.*
+htmlcov/
+
+# Virtual environments
+.venv/
+venv/
+env/
+
+# ------------------------------
+# Jupyter
+# ------------------------------
+.ipynb_checkpoints/
+
+# ------------------------------
+# Local generated artifacts
+# ------------------------------
+books/DeepLOB/reference_DeepLOB/
+books/DeepLOB/__pycache__/
+books/DeepLOB/training_history*.json
+books/DeepLOB/best_val_model*.pth
+books/DeepLOB/*.txt
+books/DeepLOB/*.png
+
+
+# Large data snapshots / temp files
+*.tmp
+*.log
