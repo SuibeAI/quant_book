@@ -100,9 +100,9 @@ for page in pages:
     groups[rel_parent.as_posix() if rel_parent.parts else "books"].append(page)
 
 index_lines = [
-    "# 计算机视觉课程 Notebook 目录",
+    "# AI 金融量化课程 Notebook 目录",
     "",
-    "本页自动汇总 `books/` 目录下的课程 Notebook。左侧目录保留原始文件夹层次，便于同时浏览多个 annotated notebook。",
+    "本页自动汇总 `books/` 目录下的课程 Notebook。左侧目录保留原始文件夹层次，便于同时浏览 AI、金融工程与量化研究相关 annotated notebook。",
     "",
 ]
 
@@ -121,9 +121,9 @@ def rel(path: Path) -> str:
 myst = [
     "version: 1",
     "project:",
-    "  title: 计算机视觉课程 Notebook",
+    "  title: AI 金融量化课程 Notebook",
     "  authors:",
-    "    - name: SUIBE Computer Vision",
+    "    - name: SUIBE Quant Book",
     "  toc:",
     "    - file: index.md",
 ]
@@ -196,7 +196,7 @@ myst = [
     "project:",
     f"  title: {book_name}",
     "  authors:",
-    "    - name: SUIBE Computer Vision",
+    "    - name: SUIBE Quant Book",
     "  toc:",
 ]
 
