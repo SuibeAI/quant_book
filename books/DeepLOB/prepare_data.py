@@ -11,13 +11,7 @@ DATA_URL = (
 	"https://raw.githubusercontent.com/zcakhaa/DeepLOB-Deep-Convolutional-"
 	"Neural-Networks-for-Limit-Order-Books/master/data/data.zip"
 )
-DEFAULT_OUTPUT_DIR = Path(__file__).resolve().parent / "books" / "DeepLOB"
-EXPECTED_FILES = (
-	"Train_Dst_NoAuction_DecPre_CF_7.txt",
-	"Test_Dst_NoAuction_DecPre_CF_7.txt",
-	"Test_Dst_NoAuction_DecPre_CF_8.txt",
-	"Test_Dst_NoAuction_DecPre_CF_9.txt",
-)
+DEFAULT_OUTPUT_DIR = Path.cwd() / "data"
 
 
 def parse_args() -> argparse.Namespace:
@@ -36,13 +30,9 @@ def parse_args() -> argparse.Namespace:
 	return parser.parse_args()
 
 
-def data_files_exist(output_dir: Path) -> bool:
-	return all((output_dir / file_name).is_file() for file_name in EXPECTED_FILES)
-
-
 def download_zip(zip_path: Path) -> None:
 	zip_path.parent.mkdir(parents=True, exist_ok=True)
-	print(f"Downloading data from {DATA_URL}")
+	print(f"Downloading data to: {zip_path}")
 	urllib.request.urlretrieve(DATA_URL, zip_path)
 
 
@@ -60,7 +50,10 @@ def flatten_nested_data_dir(output_dir: Path) -> None:
 	for item in nested_dir.iterdir():
 		target = output_dir / item.name
 		if target.exists():
-			continue
+			if target.is_dir():
+				shutil.rmtree(target)
+			else:
+				target.unlink()
 		shutil.move(str(item), str(target))
 
 	shutil.rmtree(nested_dir, ignore_errors=True)
@@ -70,8 +63,8 @@ def main() -> None:
 	args = parse_args()
 	output_dir = args.output_dir.resolve()
 
-	if data_files_exist(output_dir) and not args.force:
-		print(f"Data already exists in: {output_dir}")
+	if output_dir.is_dir() and not args.force:
+		print("data/ already exists, skip download.")
 		return
 
 	zip_path = output_dir / "data.zip"
@@ -79,14 +72,7 @@ def main() -> None:
 	extract_zip(zip_path, output_dir)
 	flatten_nested_data_dir(output_dir)
 
-	if not data_files_exist(output_dir):
-		missing_files = [file_name for file_name in EXPECTED_FILES if not (output_dir / file_name).is_file()]
-		raise FileNotFoundError(f"Missing expected files after extraction: {missing_files}")
-
-	print(f"Data prepared in: {output_dir}")
-	print("Available files:")
-	for file_name in EXPECTED_FILES:
-		print(f"- {output_dir / file_name}")
+	print("Data prepared in data/.")
 
 
 if __name__ == "__main__":

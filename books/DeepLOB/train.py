@@ -175,7 +175,7 @@ def plot_training_curves(history, output_path):
 
 def parse_args():
     parser = argparse.ArgumentParser(description="Train DeepLOB on FI-2010.")
-    parser.add_argument("--data-dir", type=Path, default=Path(__file__).resolve().parent)
+    parser.add_argument("--data-dir", type=Path, default=Path.cwd() / "data")
     parser.add_argument("--epochs", type=int, default=50)
     parser.add_argument("--batch-size", type=int, default=64)
     parser.add_argument("--window-size", type=int, default=100)
@@ -185,17 +185,17 @@ def parse_args():
     parser.add_argument(
         "--checkpoint-path",
         type=Path,
-        default=Path(__file__).resolve().parent / "best_val_model_pytorch.pth",
+        default=Path.cwd() / "best_val_model_pytorch.pth",
     )
     parser.add_argument(
         "--history-path",
         type=Path,
-        default=Path(__file__).resolve().parent / "training_history.json",
+        default=Path.cwd() / "training_history.json",
     )
     parser.add_argument(
         "--plot-path",
         type=Path,
-        default=Path(__file__).resolve().parent / "training_curves.png",
+        default=Path.cwd() / "training_curves.png",
     )
     return parser.parse_args()
 
