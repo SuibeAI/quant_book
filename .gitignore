@@ -52,6 +52,7 @@ _build/
 !.myst-templates/book-theme/
 !.myst-templates/book-theme/**
 .myst-templates/book-theme/node_modules/
+.myst-templates/
 
 # ------------------------------
 # Local generated artifacts
