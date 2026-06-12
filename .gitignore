@@ -65,6 +65,10 @@ books/DeepLOB/training_curves*.png
 books/DeepLOB/*.txt
 books/DeepLOB/data/
 books/DeepLOB/data.zip
+sources
+wiki
+toread.md
+
 
 # Large data snapshots / temp files
 *.tmp
