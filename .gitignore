@@ -73,3 +73,4 @@ toread.md
 # Large data snapshots / temp files
 *.tmp
 *.log
+*.pt
